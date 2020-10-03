@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 
 afterAll(() => {
     mongoose.connection.close();
-},20000);
+},4000);
 describe('Organization GET routes', () => {
     //ALL ORGANIZATIONS
     it('should return all organizations on database', async (done) => {
