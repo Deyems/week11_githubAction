@@ -131,7 +131,7 @@ describe('Organization GET routes', () => {
         const params = {
 			query: `mutation{
             updateOrganization(id: "5f65bd75bf3753efcd3ccc9a", organizations:{
-                organization_name: "Cushionary43",
+                organization_name: "Cushionary56",
                 marketValue: 70,
                 address: "4, john bieber",
                 ceo: "Fola",
@@ -149,7 +149,7 @@ describe('Organization GET routes', () => {
         // console.log('UPDATE org details ', res.body);
         expect(res.body.data.updateOrganization).toHaveProperty('organization_name');
         // expect(res.body.data.updateOrganization.organization_name).toBe
-        expect(res.body.data.updateOrganization.organization_name).toEqual('Cushionary43');
+        expect(res.body.data.updateOrganization.organization_name).toEqual('Cushionary56');
         expect(res.body.data.updateOrganization).toHaveProperty('address');
         done()
     });
@@ -159,8 +159,8 @@ describe('Organization GET routes', () => {
         const params = {
 			query: `mutation{
                 updateProduct(id: "5f5f82dfe5866d7c764c51d1",
-                oldProduct: "lovely",
-                newProduct: "Laragon"){
+                oldProduct: "Laragon",
+                newProduct: "Pumpert"){
                     organization_name,
                     products
                 }
@@ -171,7 +171,7 @@ describe('Organization GET routes', () => {
         // expect(res.body.data.updateProduct).toHaveProperty('products');
         expect(res.body.data.updateProduct).toHaveProperty('organization_name');
         expect(res.body.data.updateProduct).toHaveProperty('products');
-        expect(res.body.data.updateProduct.products).toContain('Laragon');
+        expect(res.body.data.updateProduct.products).toContain('Pumpert');
         done()
     });
     
@@ -180,8 +180,8 @@ describe('Organization GET routes', () => {
         const params = {
 			query: `mutation{
                 updateEmployee(id: "5f5f82dfe5866d7c764c51d1",
-                oldEmployee: "tope",
-                newEmployee: "Laragon"){
+                oldEmployee: "Laragon",
+                newEmployee: "Blownin"){
                     employees
                     organization_name
                 }
@@ -192,7 +192,7 @@ describe('Organization GET routes', () => {
         expect(res.body.data.updateEmployee).toHaveProperty('employees');
         expect(res.body.data.updateEmployee).toHaveProperty('organization_name');
         expect(res.body.data.updateEmployee).toHaveProperty('employees');
-        expect(res.body.data.updateEmployee.employees).toContain('Laragon');
+        expect(res.body.data.updateEmployee.employees).toContain('Blownin');
         done()
     });
     
