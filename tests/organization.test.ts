@@ -154,14 +154,16 @@ describe('Organization GET routes', () => {
 
     //UPDATE PRODUCT ARRAY OF AN ORGANIZATION 
     it('should return the Product Details Just posted to Application', async (done) => {
-        const params = {query: `mutation{
+        const params = {
+			query: `mutation{
                 updateProduct(id: "5f5f82dfe5866d7c764c51d1",
-                oldProduct: "Javascript",
+                oldProduct: "terriba",
                 newProduct: "Python"){
                     organization_name,
                     products
                 }
-            }`};
+            }`,
+		};
         const res = await request.post('/graphql').send(params);
         // console.log('Product Update Array ', res.body.data.updateProduct.products);
         expect(res.body.data.updateProduct).toHaveProperty('employees');
@@ -173,14 +175,16 @@ describe('Organization GET routes', () => {
     
     //UPDATE EMPLOYEE OF AN ORGANIZATION
     it('should return the Employee Details Just posted to Application', async (done) => {
-        const params = {query: `mutation{
+        const params = {
+			query: `mutation{
                 updateEmployee(id: "5f5f82dfe5866d7c764c51d1",
-                oldEmployee: "Laravel",
+                oldEmployee: "tope",
                 newEmployee: "Laragon"){
                     employees
                     organization_name
                 }
-            }`};
+            }`,
+		};
         const res = await request.post('/graphql').send(params);
         // console.log('Employee Update ', res.body);
         expect(res.body.data.updateEmployee).toHaveProperty('employees');
