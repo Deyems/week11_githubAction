@@ -128,8 +128,9 @@ describe('Organization GET routes', () => {
 
     //UPDATE ORGANIZATION
     it('should return the Organization Details FROM DB and SAVE updates to DB', async (done) => {
-        const params = {query: `mutation{
-            updateOrganization(id: "5f5f82dfe5866d7c764c51d1", organizations:{
+        const params = {
+			query: `mutation{
+            updateOrganization(id: "5f65bd75bf3753efcd3ccc9a", organizations:{
                 organization_name: "Cushionary43",
                 marketValue: 70,
                 address: "4, john bieber",
@@ -142,7 +143,8 @@ describe('Organization GET routes', () => {
                   address
                   products
                 }
-            }`};
+            }`,
+		};
         const res = await request.post('/graphql').send(params);
         // console.log('UPDATE org details ', res.body);
         expect(res.body.data.updateOrganization).toHaveProperty('organization_name');
@@ -157,7 +159,7 @@ describe('Organization GET routes', () => {
         const params = {
 			query: `mutation{
                 updateProduct(id: "5f5f82dfe5866d7c764c51d1",
-                oldProduct: "Python",
+                oldProduct: "lovely",
                 newProduct: "Laragon"){
                     organization_name,
                     products
@@ -178,8 +180,8 @@ describe('Organization GET routes', () => {
         const params = {
 			query: `mutation{
                 updateEmployee(id: "5f5f82dfe5866d7c764c51d1",
-                oldEmployee: "Laragon",
-                newEmployee: "Kemi"){
+                oldEmployee: "tope",
+                newEmployee: "Laragon"){
                     employees
                     organization_name
                 }
@@ -190,7 +192,7 @@ describe('Organization GET routes', () => {
         expect(res.body.data.updateEmployee).toHaveProperty('employees');
         expect(res.body.data.updateEmployee).toHaveProperty('organization_name');
         expect(res.body.data.updateEmployee).toHaveProperty('employees');
-        expect(res.body.data.updateEmployee.employees).toContain('Kemi');
+        expect(res.body.data.updateEmployee.employees).toContain('Laragon');
         done()
     });
     
